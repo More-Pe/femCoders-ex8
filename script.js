@@ -63,8 +63,23 @@ console.log(random());
 // ------------------------------------------LETRAS------------------------------------------
 
 // 1. Escribe una función que tome dos cadenas de texto como argumentos y devuelva su concatenación.
+function concat(string1, string2) {
+	if (typeof string1 !== 'string' || typeof string2 !== 'string') {
+		throw new Error('Ambos argumentos deben ser strings');
+	}
+	return string1 + string2;
+}
+console.log(concat('Hello', ' World'));
+// console.log(concat(3, 4)); debería lanzar error porque los argumentos son de tipo number
 
 // 2. Escribe una función que tome una cadena de texto como argumento y devuelva su longitud.
+let longitud = (string3) => {
+	if (typeof string3 !== 'string') {
+		throw new Error('El argumento debería ser un string');
+	}
+	return string3.length;
+};
+console.log(longitud('Supercalifragilisticoespialidoso'));
 
 // 3. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena en mayúsculas.
 

@@ -1,101 +1,160 @@
 // ------------------------------------------NÚMEROS------------------------------------------
 
 // 1. Escribe una función que tome dos números como argumentos y devuelva su suma.
-function sumar(a, b) {
+function sum(a, b) {
 	return a + b;
 }
-console.log(sumar(3, 5));
+console.log(sum(3, 5));
 
 // 2. Escribe una función que tome dos números como argumentos y devuelva su resta.
-let restar = (a, b) => {
+let substract = (a, b) => {
 	return a - b;
 }; //arrow function
-console.log(restar(9, 2));
+console.log(substract(9, 2));
 
 // 3. Escribe una función que tome dos números como argumentos y devuelva su producto.
-function producto(a, b) {
+function multiply(a, b) {
 	return a * b;
 }
-console.log(producto(6, 8));
+console.log(multiply(6, 8));
 
 // 4. Escribe una función que tome dos números como argumentos y devuelva su división.
-let division = (a, b) => {
+let divide = (a, b) => {
 	return a / b;
 };
-console.log(division(15, 5));
+console.log(divide(15, 5));
 
 // 5. Escribe una función que tome un número base y un exponente y devuelva el resultado de elevar el número base a la potencia dada.
-function potencia(a, b) {
+function squared(a, b) {
 	return a ** b;
 }
-console.log(potencia(5, 2));
+console.log(squared(5, 2));
 
 // 6. Escribe una función que tome dos números como argumentos y devuelva el resto de la división del primer número entre el segundo.
-let resto = (a, b) => {
+let remainder = (a, b) => {
 	return a % b;
 };
-console.log(resto(18, 5));
+console.log(remainder(18, 5));
 
 // 7. Escribe una función que tome un número como argumento y devuelva su raíz cuadrada.
-function raiz(a) {
+function squareRoot(a) {
 	return a ** 0.5; //matemáticamente calcular raíz cuadrada es lo mismo que elevar al exponente 1/2
 }
-console.log(raiz(49));
+console.log(squareRoot(49));
 
 // 8. Escribe una función que tome un número como argumento y devuelva su valor absoluto.
-let absoluto = (a) => {
+let absolutValue = (a) => {
 	return Math.abs(a);
 };
-console.log(absoluto(-89));
+console.log(absolutValue(-89));
 
 // 9. Escribe una función que tome un número decimal como argumento y devuelva el número redondeado al entero más cercano.
-function redondeo(a) {
+function roundToNearest(a) {
 	return Math.round(a);
 }
-console.log(redondeo(93.44532));
+console.log(roundToNearest(93.44532));
 
 // 10. Escribe una función que genere y devuelva un número aleatorio entre 0 y 1.
-function random() {
+function generateRandom() {
 	return Math.random() * 1;
 }
-console.log(random());
+console.log(generateRandom());
 
 // ------------------------------------------LETRAS------------------------------------------
 
 // 1. Escribe una función que tome dos cadenas de texto como argumentos y devuelva su concatenación.
-function concat(string1, string2) {
+function concatStrings(string1, string2) {
 	if (typeof string1 !== 'string' || typeof string2 !== 'string') {
-		throw new Error('Ambos argumentos deben ser strings');
+		throw new Error('Both arguments must be strings');
 	}
 	return string1 + string2;
 }
-console.log(concat('Hello', ' World'));
+console.log(concatStrings('Hello', ' World'));
 // console.log(concat(3, 4)); debería lanzar error porque los argumentos son de tipo number
 
 // 2. Escribe una función que tome una cadena de texto como argumento y devuelva su longitud.
-let longitud = (string3) => {
-	if (typeof string3 !== 'string') {
-		throw new Error('El argumento debería ser un string');
+let stringLength = (string) => {
+	if (typeof string !== 'string') {
+		throw new Error('Argument must be a string');
 	}
-	return string3.length;
+	return string.length;
 };
-console.log(longitud('Supercalifragilisticoespialidoso'));
+console.log(stringLength('Supercalifragilisticoespialidoso'));
 
 // 3. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena en mayúsculas.
+let stringToUpper = (string) => {
+	if (typeof string !== 'string') {
+		throw new Error('Argument must be a string');
+	}
+	return string.toUpperCase();
+};
+console.log(stringToUpper('patito'));
 
 // 4. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena en minúsculas.
+let stringToLower = (string) => {
+	if (typeof string !== 'string') {
+		throw new Error('Argument must be a string');
+	}
+	return string.toLowerCase();
+};
+console.log(stringToLower('pAtIto'));
 
 // 5. Escribe una función que tome una cadena de texto y un índice como argumentos, y devuelva el carácter en esa posición.
+function charAtPosition(string, index) {
+	if (typeof string !== 'string' || typeof index !== 'number') {
+		throw new Error('Arguments must be a string and a number');
+	}
+	return string.charAt(index);
+}
+console.log(charAtPosition('otorrinolaringología', 6));
 
 // 6. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena invertida.
+function reverse(string) {
+	if (typeof string !== 'string') {
+		throw new Error('Arguments must be a string and a number');
+	}
+	return string.split('').reverse().join('');
+}
+console.log(reverse('Esto se come con queso'));
 
 // 7. Escribe una función que tome una cadena de texto y un carácter como argumentos, y devuelva la cantidad de veces que el carácter aparece en la cadena.
+function countCharacter (string, char){
+	if (typeof string !== 'string'|| typeof char !== 'string' || char.length !== 1) {
+		throw new Error('Arguments must be a string and a character');
+	};
+	let count = 0;
+	for (let i=0; i < string.length; i++){
+		if (string.charAt(i) == char){
+		 count +=1;
+		}
+	}
+	return count;
+}
+console.log(countCharacter('barbería', 'a'));
 
 // 8. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena sin espacios en blanco.
+function deleteSpaces (string){
+	if (typeof string !== 'string') {
+		throw new Error('Argument must be a string');
+	};
+	return string.split(' ').join('');
+}
+console.log(deleteSpaces('Por qué todo junto se escribe separado y separado se escribe todo junto??'));
 
 // 9. Escribe una función que tome una cadena de texto como argumento y devuelva true si es un palíndromo (se lee igual de izquierda a derecha y de derecha a izquierda), o false si no lo es.
+function isPalindrome (word){
+	let reverseWord = reverse(word) //estoy llamando a la función reverse del ejercicio 6 
+	if (word === reverseWord){
+		return true;
+	} else{
+		return false;
+	}
+}
+console.log(isPalindrome('banana'));
+console.log(isPalindrome('anana'));
 
 // 10. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena con la primera letra de cada palabra en mayúscula.
+
 
 // ------------------------------------------ARRAYS------------------------------------------
 

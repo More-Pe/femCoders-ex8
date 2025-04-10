@@ -154,7 +154,19 @@ console.log(isPalindrome('banana'));
 console.log(isPalindrome('anana'));
 
 // 10. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena con la primera letra de cada palabra en mayúscula.
-
+function firstToUpper(string) {
+	if (typeof string !== 'string') {
+		throw new Error('Argument must be a string');
+	};
+    let separatedString = string.split(' ');
+    for (let i = 0; i < separatedString.length; i++) {
+        let first = separatedString[i][0];
+        let toUpper = first.toUpperCase();
+        separatedString[i] = toUpper + separatedString[i].slice(1).toLowerCase();
+    }
+    return separatedString.join(' ');
+}
+console.log(firstToUpper('hoy me voy a mimir temprano'));
 
 // ------------------------------------------ARRAYS------------------------------------------
 

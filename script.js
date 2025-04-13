@@ -171,12 +171,59 @@ console.log(firstToUpper('hoy me voy a mimir temprano'));
 // ------------------------------------------ARRAYS------------------------------------------
 
 // 1. Escribe una función que tome un array de números como argumento y devuelva la suma de todos sus elementos.
+function arraySum(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			throw new Error('Array must contain only numbers');
+		}
+		sum += arr[i];
+	}
+	return sum;
+}
+console.log(arraySum([1, 2, 3, 4]));
 
 // 2. Escribe una función que tome un array de números como argumento y devuelva el promedio de todos sus elementos.
+function arrayAverage(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			throw new Error('Array must contain only numbers');
+		}
+		sum += arr[i];
+	}
+	return sum / arr.length;
+}
+console.log(arrayAverage([10, 20, 30, 40]));
 
 // 3. Escribe una función que tome un array de números como argumento y devuelva el array ordenado de forma ascendente.
+function sortAscending (arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	arr.sort((a,b) => {
+		return b - a;
+	});
+	return arr;
+}
+console.log(sortAscending([8, 4, 9, 0, 1, 2]));
 
 // 4. Escribe una función que tome un array de números y un número como argumentos, y devuelva un nuevo array con los elementos mayores al número dado.
+function greaterThan (arr, num) {
+	if (!Array.isArray(arr) || typeof num != 'number') {
+		throw new Error('Argument must be an array and a number');
+	};
+	return arr.filter(function (element) {
+		return element > num;
+	})
+}
+console.log(greaterThan([2, 4, 7, 3, 9, 20, 55, 107], 50));
 
 // 5. Escribe una función que tome dos arrays como argumentos y devuelva un nuevo array con todos los elementos de ambos arrays.
 

@@ -118,14 +118,18 @@ function reverse(string) {
 console.log(reverse('Esto se come con queso'));
 
 // 7. Escribe una función que tome una cadena de texto y un carácter como argumentos, y devuelva la cantidad de veces que el carácter aparece en la cadena.
-function countCharacter (string, char){
-	if (typeof string !== 'string'|| typeof char !== 'string' || char.length !== 1) {
+function countCharacter(string, char) {
+	if (
+		typeof string !== 'string' ||
+		typeof char !== 'string' ||
+		char.length !== 1
+	) {
 		throw new Error('Arguments must be a string and a character');
-	};
+	}
 	let count = 0;
-	for (let i=0; i < string.length; i++){
-		if (string.charAt(i) == char){
-		 count +=1;
+	for (let i = 0; i < string.length; i++) {
+		if (string.charAt(i) == char) {
+			count += 1;
 		}
 	}
 	return count;
@@ -133,20 +137,24 @@ function countCharacter (string, char){
 console.log(countCharacter('barbería', 'a'));
 
 // 8. Escribe una función que tome una cadena de texto como argumento y devuelva la misma cadena sin espacios en blanco.
-function deleteSpaces (string){
+function deleteSpaces(string) {
 	if (typeof string !== 'string') {
 		throw new Error('Argument must be a string');
-	};
+	}
 	return string.split(' ').join('');
 }
-console.log(deleteSpaces('Por qué todo junto se escribe separado y separado se escribe todo junto??'));
+console.log(
+	deleteSpaces(
+		'Por qué todo junto se escribe separado y separado se escribe todo junto??',
+	),
+);
 
 // 9. Escribe una función que tome una cadena de texto como argumento y devuelva true si es un palíndromo (se lee igual de izquierda a derecha y de derecha a izquierda), o false si no lo es.
-function isPalindrome (word){
-	let reverseWord = reverse(word) //estoy llamando a la función reverse del ejercicio 6 
-	if (word === reverseWord){
+function isPalindrome(word) {
+	let reverseWord = reverse(word); //estoy llamando a la función reverse del ejercicio 6
+	if (word === reverseWord) {
 		return true;
-	} else{
+	} else {
 		return false;
 	}
 }
@@ -157,14 +165,14 @@ console.log(isPalindrome('anana'));
 function firstToUpper(string) {
 	if (typeof string !== 'string') {
 		throw new Error('Argument must be a string');
-	};
-    let separatedString = string.split(' ');
-    for (let i = 0; i < separatedString.length; i++) {
-        let first = separatedString[i][0];
-        let toUpper = first.toUpperCase();
-        separatedString[i] = toUpper + separatedString[i].slice(1).toLowerCase();
-    }
-    return separatedString.join(' ');
+	}
+	let separatedString = string.split(' ');
+	for (let i = 0; i < separatedString.length; i++) {
+		let first = separatedString[i][0];
+		let toUpper = first.toUpperCase();
+		separatedString[i] = toUpper + separatedString[i].slice(1).toLowerCase();
+	}
+	return separatedString.join(' ');
 }
 console.log(firstToUpper('hoy me voy a mimir temprano'));
 
@@ -203,11 +211,11 @@ function arrayAverage(arr) {
 console.log(arrayAverage([10, 20, 30, 40]));
 
 // 3. Escribe una función que tome un array de números como argumento y devuelva el array ordenado de forma ascendente.
-function sortAscending (arr) {
+function sortAscending(arr) {
 	if (!Array.isArray(arr)) {
 		throw new Error('Argument must be an array');
 	}
-	arr.sort((a,b) => {
+	arr.sort((a, b) => {
 		return b - a;
 	});
 	return arr;
@@ -215,21 +223,60 @@ function sortAscending (arr) {
 console.log(sortAscending([8, 4, 9, 0, 1, 2]));
 
 // 4. Escribe una función que tome un array de números y un número como argumentos, y devuelva un nuevo array con los elementos mayores al número dado.
-function greaterThan (arr, num) {
+function greaterThan(arr, num) {
 	if (!Array.isArray(arr) || typeof num != 'number') {
 		throw new Error('Argument must be an array and a number');
-	};
+	}
 	return arr.filter(function (element) {
 		return element > num;
-	})
+	});
 }
 console.log(greaterThan([2, 4, 7, 3, 9, 20, 55, 107], 50));
 
 // 5. Escribe una función que tome dos arrays como argumentos y devuelva un nuevo array con todos los elementos de ambos arrays.
+function combineArrays(arr1, arr2) {
+	if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+		throw new Error('Arguments must be arrays');
+	}
+	return [...arr1, ...arr2];
+}
+console.log(combineArrays([1, 2, 3, 4], [5, 6, 7, 8]));
 
 // 6. Escribe una función que tome un array de números como argumento y devuelva el número máximo dentro del array.
+function arrayMax(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let max = arr[0];
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			throw new Error('Array must contain only numbers');
+		}
+		if (arr[i] > max) {
+			max = arr[i];
+		}
+	}
+	return max;
+}
+console.log(arrayMax([1, 2, 3, 4, 5]));
 
 // 7. Escribe una función que tome un array de números como argumento y devuelva el número mínimo dentro del array.
+function arrayMin(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let min = arr[0];
+	for (let i = 0; i < arr.length; i++) {
+		if (typeof arr[i] !== 'number') {
+			throw new Error('Array must contain only numbers');
+		}
+		if (arr[i] < min) {
+			min = arr[i];
+		}
+	}
+	return min;
+}
+console.log(arrayMin([1, 2, 3, 4, 5]));
 
 // 8. Escribe una función que tome un array y un elemento como argumentos, y devuelva la cantidad de veces que el elemento aparece en el array.
 

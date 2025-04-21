@@ -279,29 +279,172 @@ function arrayMin(arr) {
 console.log(arrayMin([1, 2, 3, 4, 5]));
 
 // 8. Escribe una función que tome un array y un elemento como argumentos, y devuelva la cantidad de veces que el elemento aparece en el array.
+function countElement(arr, element) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let count = 0;
+	for (let i = 0; i < arr.length; i++) {
+		if (arr[i] === element) {
+			count += 1;
+		}
+	}
+	return count;
+}
+console.log(
+	countElement(
+		['banana', 'pera', 'piña', 'manzana', 'piña', 'fresa', 'piña'],
+		'piña',
+	),
+);
 
 // 9. Escribe una función que tome un array como argumento y devuelva un nuevo array sin elementos duplicados.
+function deleteDuplicates(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let newArray = [];
+	for (let i = 0; i < arr.length; i++) {
+		if (!newArray.includes(arr[i])) {
+			newArray.push(arr[i]);
+		}
+	}
+	return newArray;
+}
+console.log(deleteDuplicates([1, 2, 3, 4, 5, 1, 2, 3]));
 
 // 10. Escribe una función que tome un array como argumento y devuelva un nuevo array con los elementos en orden inverso.
+function reverseArray(arr) {
+	if (!Array.isArray(arr)) {
+		throw new Error('Argument must be an array');
+	}
+	let reversed = arr.reverse();
+	return reversed;
+}
+console.log(reverseArray([1, 2, 3, 4, 5]));
 
 // ------------------------------------------OBJETOS LITERALES------------------------------------------
 
 // 1. Escribe una función que tome un objeto literal con una propiedad "nombre" y devuelva el valor de esa propiedad.
+function getName(obj) {
+	if (typeof obj !== 'object' || obj === null || !('nombre' in obj)) {
+		throw new Error('Argument must be an object that has the property nombre');
+	}
+	return obj.nombre;
+}
+console.log(getName({ nombre: 'Arturo', edad: 25 }));
 
 // 2. Escribe una función que tome un objeto literal con una propiedad "edad" y un número como argumentos, y actualice el valor de la propiedad "edad" con el número dado.
+function changeAge(obj, edad) {
+	if (
+		typeof obj !== 'object' ||
+		obj === null ||
+		!('edad' in obj) ||
+		typeof edad !== 'number'
+	) {
+		throw new Error(
+			'Arguments must be an object that has the property edad, and a number',
+		);
+	}
+	obj.edad = edad;
+	return obj.edad;
+}
+console.log(changeAge({ edad: 25 }, 26));
 
 // 3. Escribe una función que tome un objeto literal y una cadena de texto como argumentos, y agregue una nueva propiedad al objeto con la cadena de texto como nombre y un valor inicial de null.
+function addProperty(obj, name) {
+	if (typeof obj !== 'object' || obj === null || typeof name !== 'string') {
+		throw new Error('Arguments must be an object and a string');
+	}
+	obj[name] = null;
+	return obj;
+}
+console.log(addProperty({ fruit: 'strawberry' }, 'price'));
 
 // 4. Escribe una función que tome un objeto literal y una cadena de texto como argumentos, y elimine la propiedad del objeto con el nombre dado.
+function removeProperty(obj, property) {
+	if (typeof obj !== 'object' || obj === null || typeof property !== 'string') {
+		throw new Error('Arguments must be an object and a string');
+	}
+	delete obj[property];
+	return obj;
+}
+console.log(removeProperty({ fruit: 'strawberry', price: 3 }, 'price'));
 
 // 5. Escribe una función que tome un objeto literal como argumento y devuelva la cantidad de propiedades que tiene.
+function countPropertys(obj) {
+	if (typeof obj !== 'object' || obj === null) {
+		throw new Error('Argument must be an object');
+	}
+	return Object.keys(obj).length;
+}
+console.log(countPropertys({ name: 'Morena', age: 33, city: 'Valencia' }));
 
 // 6. Escribe una función que tome un objeto literal y una cadena de texto como argumentos, y devuelva true si el objeto tiene una propiedad con ese nombre, o false si no la tiene.
+function hasProperty(obj, name) {
+	if (typeof obj !== 'object' || obj === null || typeof name !== 'string') {
+		throw new Error('Arguments must be an object and a string');
+	}
+	return Object.hasOwn(obj, name);
+}
+console.log(hasProperty({ fruit: 'strawberry', price: 3 }, 'price'));
 
 // 7. Escribe una función que tome un objeto literal como argumento y devuelva un array con todos los valores de sus propiedades.
+function getValues(obj) {
+	if (typeof obj !== 'object' || obj === null) {
+		throw new Error('Argument must be an object');
+	}
+	return Object.values(obj);
+}
+console.log(getValues({ fruit: 'strawberry', price: 3 }));
 
 // 8. Escribe una función que tome dos objetos literales como argumentos y devuelva true si tienen las mismas propiedades y los mismos valores en esas propiedades, o false si son diferentes.
+function compareObjects(obj1, obj2) {
+	if (
+		typeof obj1 !== 'object' ||
+		typeof obj2 !== 'object' ||
+		obj1 === null ||
+		obj2 === null
+	) {
+		throw new Error('Arguments must be two no nulls objects');
+	}
+	const keys1 = Object.keys(obj1);
+	const keys2 = Object.keys(obj2);
+	if (keys1.length !== keys2.length) {
+		return false;
+	}
+	for (let key of keys1) {
+		if (!obj2.hasOwnProperty(key) || obj1[key] !== obj2[key]) {
+			return false;
+		}
+	}
+	return true;
+}
+console.log(compareObjects({ name: 'Ana' }, { name: 'Ana' }));
+console.log(compareObjects({ name: 'Ana', age: 32 }, { name: 'Ana', age: 33 }));
 
 // 9. Escribe una función que tome un objeto literal como argumento y devuelva una copia exacta de ese objeto.
+function copyObject(obj) {
+	if (typeof obj !== 'object' || obj === null) {
+		throw new Error('Argument must be an object');
+	}
+	const copy = { ...obj };
+	return copy;
+}
+console.log(copyObject({ name: 'Ana', age: 22 }));
 
 // 10. Escribe una función que tome dos objetos literales como argumentos y devuelva un nuevo objeto con todas las propiedades de ambos objetos. Si hay propiedades con el mismo nombre, el valor del segundo objeto deberá prevalecer.
+function combineObjects(obj1, obj2) {
+	if (
+		typeof obj1 !== 'object' ||
+		typeof obj2 !== 'object' ||
+		obj1 === null ||
+		obj2 === null
+	) {
+		throw new Error('Arguments must be two no nulls objects');
+	}
+	return { ...obj1, ...obj2 };
+}
+console.log(
+	combineObjects({ name: 'Julieta', age: 32 }, { age: 33, city: 'Barcelona' }),
+);
